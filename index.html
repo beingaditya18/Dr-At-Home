@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Silky</title>
+    <style>
+        body {
+            background-color: #f5f5dc; /* Cream background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2a4d69;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .symptoms-container {
+            background: #e6f2ff;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .category {
+            font-weight: bold;
+            color: #104e8b;
+            margin-top: 10px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .result-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .card {
+            background: #e6ffff;
+            padding: 15px;
+            border-radius: 5px;
+            width: 45%;
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dr. Silky</h1>
+        <p><strong>A Project by Aditya Mandloi</strong></p>
+        <div class="symptoms-container">
+            <p><strong>Select Symptoms:</strong></p>
+            <form action="/predict" method="post">
+                <div class="category">General Symptoms</div>
+                <input type="checkbox" name="symptoms" value="Fever"> Fever<br>
+                <input type="checkbox" name="symptoms" value="Fatigue"> Fatigue<br>
+                <input type="checkbox" name="symptoms" value="Weight Loss"> Weight Loss<br>
+                
+                <div class="category">Skin-Related</div>
+                <input type="checkbox" name="symptoms" value="Itching"> Itching<br>
+                <input type="checkbox" name="symptoms" value="Skin Rash"> Skin Rash<br>
+                <input type="checkbox" name="symptoms" value="Nodal Skin Eruptions"> Nodal Skin Eruptions<br>
+                
+                <div class="category">Respiratory Issues</div>
+                <input type="checkbox" name="symptoms" value="Cough"> Cough<br>
+                <input type="checkbox" name="symptoms" value="High Fever"> High Fever<br>
+                <input type="checkbox" name="symptoms" value="Breathlessness"> Breathlessness<br>
+                
+                <div class="category">Digestive Issues</div>
+                <input type="checkbox" name="symptoms" value="Nausea"> Nausea<br>
+                <input type="checkbox" name="symptoms" value="Vomiting"> Vomiting<br>
+                <input type="checkbox" name="symptoms" value="Stomach Pain"> Stomach Pain<br>
+                
+                <button type="submit" class="btn">Predict</button>
+            </form>
+        </div>
+        
+        {% if dt_prediction %}
+        <div class="result-container">
+            <div class="card">
+                <h3>Predictions:</h3>
+                <strong>Decision Tree:</strong> {{ dt_prediction }}<br>
+                <strong>Random Forest:</strong> {{ rf_prediction }}<br>
+                <strong>Naive Bayes:</strong> {{ nb_prediction }}<br>
+            </div>
+            <div class="card">
+                <h3>Precautions:</h3>
+                <ul>
+                    {% for precaution in precautions %}
+                    <li>{{ precaution }}</li>
+                    {% endfor %}
+                </ul>
+                <strong>Consult a Specialist:</strong> {{ specialist }}
+            </div>
+        </div>
+        <div class="card" style="margin-top:20px;">
+            <h3>AI Medical Insights:</h3>
+            <p>{{ ai_response }}</p>
+        </div>
+        <p class="warning">⚠ This is a prediction. Please consult a doctor for professional medical advice.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
