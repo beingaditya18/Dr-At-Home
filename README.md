@@ -95,7 +95,6 @@ All models are trained on `Training.csv` and validated using `Testing.csv`.
 * Handles form submission
 * Performs predictions and displays results with AI response
 
----
 
 ## 📋 Technologies Used
 
@@ -104,8 +103,6 @@ All models are trained on `Training.csv` and validated using `Testing.csv`.
 * Scikit-learn
 * Google Generative AI (Gemini)
 * HTML + Jinja2 Templates
-
----
 
 ## 📄 License
 
