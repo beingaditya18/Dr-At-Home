@@ -8,10 +8,10 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
-# Initialize Flask app
+
 app = Flask("Humpty - Your Doctor")
 
-# Load environment variables
+
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
@@ -112,3 +112,4 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
