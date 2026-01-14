@@ -45,9 +45,6 @@ pip install flask scikit-learn pandas numpy python-dotenv google-generativeai
 
 Create a `.env` file in the root directory:
 
-```
-GEMINI_API_KEY=your_google_gemini_api_key
-```
 
 ###  ▶️ Run the App
 
